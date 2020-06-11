@@ -1,4 +1,4 @@
-<img src="http://static.suroot.win/image/dopi.png" alt="Hexo logo" width="20%" align="right" />
+<img src="http://static.suroot.win/image/dopi.png" alt="Hexo logo" width="15%" align="right" />
 
 # doPi
 
