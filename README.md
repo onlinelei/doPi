@@ -6,4 +6,4 @@
 >
 
 
-![](https://img.shields.io/badge/java-1.8-green)![](https://img.shields.io/badge/version-1.0-yellow)
+![](https://img.shields.io/badge/java-1.8-green)![](https://img.shields.io/badge/version-1.0-green)![](https://img.shields.io/badge/pi4j-1.1-green)
