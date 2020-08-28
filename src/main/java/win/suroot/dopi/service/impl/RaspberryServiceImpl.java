@@ -23,12 +23,10 @@ import java.util.concurrent.Callable;
 @Service
 public class RaspberryServiceImpl implements RaspberryService {
 
-    @Autowired
-    private GpioController gpioController;
-
     @Override
     public void light() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
+        GpioController gpioController = GpioFactory.getInstance();
         final GpioPinDigitalOutput pin = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
 
         pin.setShutdownOptions(true, PinState.LOW);
@@ -52,6 +50,7 @@ public class RaspberryServiceImpl implements RaspberryService {
 
     @Override
     public void light1() {
+        GpioController gpioController = GpioFactory.getInstance();
         GpioPinDigitalInput button = gpioController.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
         // 获取点灯小组
         GpioPinDigitalOutput myLed[] = {

@@ -1,4 +1,4 @@
-package win.suroot.dopi.linstener;
+package win.suroot.dopi.config;
 
 
 import com.pi4j.io.gpio.GpioController;
@@ -15,9 +15,6 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class RaspBerryInit {
-
-    @Autowired
-    private GpioController gpioController;
 
     @PostConstruct
     public void init() {
