@@ -7,7 +7,7 @@ import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
 import com.pi4j.platform.PlatformManager;
 import com.pi4j.system.NetworkInfo;
 import com.pi4j.system.SystemInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import win.suroot.dopi.service.RaspberryService;
 
@@ -20,6 +20,8 @@ import java.util.concurrent.Callable;
  * @create 2018-06-01 15:54
  * @desc 树莓派实现类
  */
+
+@Slf4j
 @Service
 public class RaspberryServiceImpl implements RaspberryService {
 
