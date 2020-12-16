@@ -16,13 +16,17 @@ public class TestThread {
             }
         });
         CountDownLatch count = new CountDownLatch(10);
+        Semaphore semaphore = new Semaphore(10);
 
+        List<CallableDemo> demos = new ArrayList<>(16);
         List<Future<String>> submits = new ArrayList<>(16);
         for (int i = 0; i < 10; i++) {
-            CallableDemo call = new CallableDemo(barrier, count);
+            CallableDemo call = new CallableDemo(barrier, count, semaphore);
+            demos.add(call);
             Future<String> submit = pool.submit(call);
             submits.add(submit);
         }
+        List<Future<String>> futures = pool.invokeAll(demos);
         pool.shutdown();
 
         System.out.println("到达 countDownLatch 阻塞点");
@@ -31,6 +35,10 @@ public class TestThread {
 
         for (Future<String> submit : submits) {
             System.out.println("执行结果：" + submit.get());
+        }
+
+        for (Future<String> future : futures) {
+            System.out.println("future 执行结果：" + future.get());
         }
         Thread t = Thread.currentThread();
         System.out.println(t.getName() + "线程ID:" + t.getId() + "执行完毕");
@@ -43,14 +51,17 @@ class CallableDemo implements Callable<String> {
 
     private final CyclicBarrier barrier;
     private final CountDownLatch count;
+    private final Semaphore semaphore;
 
-    public CallableDemo(CyclicBarrier barrier, CountDownLatch count) {
+    public CallableDemo(CyclicBarrier barrier, CountDownLatch count, Semaphore semaphore) {
         this.barrier = barrier;
         this.count = count;
+        this.semaphore = semaphore;
     }
 
     @Override
     public String call() throws Exception {
+        semaphore.acquire();
         int init = (int) (Math.random() * 100);
         int result = init;
         Thread t = Thread.currentThread();
@@ -72,6 +83,7 @@ class CallableDemo implements Callable<String> {
         System.out.println(t.getName() + "线程ID:" + t.getId() + "到达第三个检查点");
         barrier.await();
 
+        semaphore.release();
         return t.getName() + "线程ID:" + t.getId() + "; 初始值：" + init + "执行结果：" + result;
     }
 
