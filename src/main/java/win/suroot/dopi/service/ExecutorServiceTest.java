@@ -1,10 +1,12 @@
 package win.suroot.dopi.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.scheduling.annotation.Async;
 
-@Service
 public interface ExecutorServiceTest {
 
     void execTest();
+
+    @Async
+    void asyncTask();
 
 }

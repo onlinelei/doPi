@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <property name="log.base" value="logs/wechat-offiaccount"/>
+
+    <appender name="rollingFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.base}/stdout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}/stdout/stdout.%d{yyyy-MM-dd}.%i.log
+            </FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ActionAccessLoggerFileOut"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.base}/action-access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}/action-access.%d{yyyy-MM-dd}.%i.log
+            </FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="PerformanceStatisticsReportLoggerFileOut"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.base}/performance-statistics.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}/performance-statistics.%d{yyyy-MM-dd}.%i.log
+            </FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- logger -->
+    <logger name="ActionAccessLogger" level="info" additivity="false">
+        <appender-ref ref="ActionAccessLoggerFileOut"/>
+    </logger>
+    <logger name="PerformanceStatisticsReportLogger" level="info"
+            additivity="false">
+        <appender-ref ref="PerformanceStatisticsReportLoggerFileOut"/>
+    </logger>
+    <logger name="com.sunlands" level="DEBUG"/>
+    <logger name="com.sunlands.config.aop" level="DEBUG"/>
+    <logger name="ch.qos.logback" level="ERROR"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.security" level="INFO"/>
+    <logger name="org.mybatis" level="INFO"/>
+    <logger name="org.apache.struts2" level="ERROR"/>
+    <logger name="org.apache.struts2.json" level="ERROR"/>
+
+    <logger name="com.opensymphony.xwork2" level="ERROR"/>
+    <logger name="httpclient.wire" level="INFO"/>
+    <logger name="org.quartz.core" level="INFO"/>
+    <logger name="com.sunlands.config" level="OFF"/>
+    <logger name="io.netty" level="INFO"/>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+</configuration>

@@ -34,3 +34,5 @@ build/
 mvnw*
 .mvn
 
+logs/
+src/main/java/win/suroot/dopi/.DS_Store
