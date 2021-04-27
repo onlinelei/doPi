@@ -29,13 +29,13 @@ public class LoggerAdvice {
 
     private ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-    @Before("within(win.suroot.dopi.controller..*) && @annotation(loggerManage)")
+    @Before("within(win.suroot.dopi.web.controller..*) && @annotation(loggerManage)")
     public void addBeforeLogger(JoinPoint joinPoint, LoggerManage loggerManage) {
         logger.info("执行{}开始,方法签名:{},传入参数:{}", loggerManage.description(), joinPoint.getSignature().toShortString(), parseParams(joinPoint));
         startTime.set(System.nanoTime());
     }
 
-    @AfterReturning(returning = "rvt", pointcut = "within(win.suroot.dopi.controller..*) && @annotation(loggerManage)")
+    @AfterReturning(returning = "rvt", pointcut = "within(win.suroot.dopi.web.controller..*) && @annotation(loggerManage)")
     public void addAfterReturningLogger(LoggerManage loggerManage, Object rvt) {
         long executeTime = (System.nanoTime() - startTime.get()) / 1000000;
         startTime.remove();

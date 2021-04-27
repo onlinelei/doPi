@@ -1,4 +1,4 @@
-package win.suroot.dopi.controller;
+package win.suroot.dopi.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,19 +6,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import win.suroot.dopi.config.logConfig.LoggerManage;
 import win.suroot.dopi.service.ExecutorServiceTest;
+import win.suroot.dopi.service.VerifyTableService;
 
 /**
  * @author qianlei
  * @create 2020-04-20 11:48
  * @desc
  */
+
 @Slf4j
 @RestController
 @RequestMapping("/demo")
-public class DemoController {
+public class DemoController extends BaseController {
 
     @Autowired
     private ExecutorServiceTest executorService;
+    @Autowired
+    private VerifyTableService verifyTableService;
 
     @RequestMapping("/hello")
     public String hello() {
@@ -32,5 +36,17 @@ public class DemoController {
             executorService.asyncTask();
         }
         return "done";
+    }
+
+    @RequestMapping("/testMysql")
+    @LoggerManage(description = "测试 mysql 连通性")
+    public Object testMysql() {
+        try {
+            int id = verifyTableService.testMysql();
+            return createSuccessMap(id);
+        } catch (Exception e) {
+            log.error("testMysql error :{}", e.getMessage());
+            return createFailedMap(e.getMessage());
+        }
     }
 }

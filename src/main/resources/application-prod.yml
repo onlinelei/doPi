@@ -15,9 +15,9 @@ spring:
   datasource:
     master:
       driver-class-name: com.mysql.jdbc.Driver
-      jdbc-url: ${master_url}
-      username: ${master_username}
-      password: ${master_password}
+      jdbc-url: jdbc:mysql://localhost/test?characterEncoding=utf8&amp;useSSL=false
+      username: root
+      password: 123456
       filters: stat
       validationQuery: select 'x'
       init-s-q-l: SET NAMES utf8mb4
@@ -34,9 +34,9 @@ spring:
       timeBetweenEvictionRunsMillis: 60000
     slave:
       driver-class-name: com.mysql.jdbc.Driver
-      jdbc-url: ${slave_url}
-      username: ${slave_username}
-      password: ${slave_password}
+      jdbc-url: jdbc:mysql://localhost/test?characterEncoding=utf8&amp;useSSL=false
+      username: root
+      password: 123456
       filters: stat
       validationQuery: select 'x'
       init-s-q-l: SET NAMES utf8mb4
