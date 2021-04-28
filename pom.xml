@@ -25,7 +25,7 @@
     <properties>
         <java.version>1.8</java.version>
         <commons-lang3.version>3.9</commons-lang3.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <mybatis.starter.version>1.3.2</mybatis.starter.version>
         <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
         <aspectj-version>1.7.4</aspectj-version>
