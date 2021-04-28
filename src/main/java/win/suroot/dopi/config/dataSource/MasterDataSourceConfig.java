@@ -14,6 +14,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+@Primary
 @Configuration
 @MapperScan(basePackages = "win.suroot.dopi.dao.master", sqlSessionTemplateRef = "masterSqlSessionTemplate")
 public class MasterDataSourceConfig {
@@ -32,7 +33,6 @@ public class MasterDataSourceConfig {
     }
 
     @Bean
-    @Primary
     public DataSourceTransactionManager asterTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

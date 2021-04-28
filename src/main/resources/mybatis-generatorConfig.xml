@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <context id="testTables" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 分页插件 不能正常使用，可以在排查一下-->
+<!--        <plugin type="win.suroot.dopi.common.PaginationPlugin"/>-->
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/test?characterEncoding=utf8&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <!-- 如果maven工程只是单独的一个工程，targetProject="src/main/java" 如果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：targetProject="ecps-manager-mapper"，下同-->
+        <javaModelGenerator targetPackage="win.suroot.dopi.po" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 生成的 bean 默认继承的父类-->
+            <property name="rootClass" value="win.suroot.dopi.common.BaseEntity"/>
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="win.suroot.dopi.mapper" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="win.suroot.dopi.mapper" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+        <table tableName="t_verify_table" domainObjectName="VerifyTable">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+<!--        <table tableName="t_template_param" domainObjectName="TaskTemplateParam">-->
+<!--            <generatedKey column="param_id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="is_visible" javaType="Integer" jdbcType="TINYINT"/>-->
+<!--            <columnOverride column="is_required" javaType="Integer" jdbcType="TINYINT"/>-->
+<!--            <columnOverride column="data_flow" javaType="Integer" jdbcType="TINYINT"/>-->
+<!--        </table>-->
+    </context>
+</generatorConfiguration>
+
+<!--
+执行命名：
+mvn mybatis-generator:generate
+-->

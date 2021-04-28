@@ -82,6 +82,8 @@
     <logger name="org.quartz.core" level="INFO"/>
     <logger name="com.sunlands.config" level="OFF"/>
     <logger name="io.netty" level="INFO"/>
+    <logger name="org.bitcoinj.crypto.MnemonicCode" level="ERROR"/>
+
 
     <root>
         <level value="DEBUG"/>

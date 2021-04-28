@@ -13,8 +13,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
-@Configuration
-@MapperScan(basePackages = "win.suroot.dopi.dao.slave", sqlSessionTemplateRef = "slaveSqlSessionTemplate")
+//@Configuration
+//@MapperScan(basePackages = "win.suroot.dopi.dao.slave", sqlSessionTemplateRef = "slaveSqlSessionTemplate")
 public class SlaveDataSourceConfig {
 
     @Bean

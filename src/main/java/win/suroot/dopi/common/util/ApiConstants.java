@@ -1,4 +1,4 @@
-package win.suroot.dopi.util;
+package win.suroot.dopi.common.util;
 
 /**
  * Created by wangzz on 2016/9/29.

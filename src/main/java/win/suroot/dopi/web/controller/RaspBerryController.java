@@ -1,4 +1,4 @@
-package win.suroot.dopi.controller;
+package win.suroot.dopi.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import win.suroot.dopi.service.RaspberryService;
-import win.suroot.dopi.util.ApiUtils;
+import win.suroot.dopi.common.util.ApiUtils;
 
 
 @RestController()

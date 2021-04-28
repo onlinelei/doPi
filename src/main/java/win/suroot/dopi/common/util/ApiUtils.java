@@ -1,13 +1,8 @@
-package win.suroot.dopi.util;
+package win.suroot.dopi.common.util;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
