@@ -52,5 +52,10 @@ spring:
       minEvictableIdleTimeMillis: 300000
       timeBetweenEvictionRunsMillis: 60000
 
+
+mybatis:
+  type-aliases-package: win.suroot.dopi.mapper
+  mapper-locations: win.suroot.dopi.mapper
+
 logging:
   config: classpath:logback.xml

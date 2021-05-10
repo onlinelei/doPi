@@ -17,7 +17,7 @@ import win.suroot.dopi.service.VerifyTableService;
 @Slf4j
 @RestController
 @RequestMapping("/demo")
-public class DemoController extends BaseController {
+public class DemoController {
 
     @Autowired
     private ExecutorServiceTest executorService;
@@ -41,12 +41,6 @@ public class DemoController extends BaseController {
     @RequestMapping("/testMysql")
     @LoggerManage(description = "测试 mysql 连通性")
     public Object testMysql() {
-        try {
-            int id = verifyTableService.testMysql();
-            return createSuccessMap(id);
-        } catch (Exception e) {
-            log.error("testMysql error :{}", e.getMessage());
-            return createFailedMap(e.getMessage());
-        }
+        return verifyTableService.testMysql();
     }
 }
