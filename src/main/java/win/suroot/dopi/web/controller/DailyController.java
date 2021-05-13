@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import win.suroot.dopi.dto.DailyInfoDTO;
-import win.suroot.dopi.po.DailyInfo;
 import win.suroot.dopi.service.DailyInfoService;
 
 @Slf4j
