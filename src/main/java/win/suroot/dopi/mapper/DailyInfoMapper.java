@@ -1,10 +1,13 @@
 package win.suroot.dopi.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import win.suroot.dopi.po.DailyInfo;
 import win.suroot.dopi.po.DailyInfoExample;
 
+@Mapper
 public interface DailyInfoMapper {
     int countByExample(DailyInfoExample example);
 

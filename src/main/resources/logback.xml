@@ -3,7 +3,7 @@
 <configuration>
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%.35c:%L] - %m %n</pattern>
         </encoder>
     </appender>
 
@@ -22,7 +22,7 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%.35c:%L] - %m %n</pattern>
         </encoder>
     </appender>
 
@@ -39,7 +39,7 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%.35c:%L] - %m %n</pattern>
         </encoder>
     </appender>
 
@@ -56,7 +56,7 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%date [%thread][IP:%X{ip}|USER:%X{user}][%-5level %logger{80}] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%.35c:%L] - %m %n</pattern>
         </encoder>
     </appender>
 
