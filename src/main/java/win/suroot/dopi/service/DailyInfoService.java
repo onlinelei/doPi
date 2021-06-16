@@ -17,20 +17,20 @@ import java.util.List;
 @Service
 public class DailyInfoService {
 
-    @Autowired
-    private DailyInfoMapper dailyInfoMapper;
+  @Autowired
+  private DailyInfoMapper dailyInfoMapper;
 
-    public DailyInfoDTO todayInfo() {
-        DailyInfoExample example = new DailyInfoExample();
-        DailyInfoExample.Criteria criteria = example.createCriteria();
-        criteria.andDateStrEqualTo(DateFormatUtils.format(new Date(), DateFormatConstant.yyyMMdd));
+  public DailyInfoDTO todayInfo() {
+    DailyInfoExample example = new DailyInfoExample();
+    DailyInfoExample.Criteria criteria = example.createCriteria();
+    criteria.andDateStrEqualTo(DateFormatUtils.format(new Date(), DateFormatConstant.yyyMMdd));
 
-        List<DailyInfo> dailyInfos = dailyInfoMapper.selectByExample(example);
-        if (!CollectionUtils.isEmpty(dailyInfos)) {
-            DailyInfoDTO dailyInfoDTO = new DailyInfoDTO();
-            BeanUtils.copyProperties(dailyInfos.get((0)), dailyInfoDTO);
-            return dailyInfoDTO;
-        }
-        return new DailyInfoDTO();
+    List<DailyInfo> dailyInfos = dailyInfoMapper.selectByExample(example);
+    if (!CollectionUtils.isEmpty(dailyInfos)) {
+      DailyInfoDTO dailyInfoDTO = new DailyInfoDTO();
+      BeanUtils.copyProperties(dailyInfos.get((0)), dailyInfoDTO);
+      return dailyInfoDTO;
     }
+    return new DailyInfoDTO();
+  }
 }

@@ -9,25 +9,25 @@ import win.suroot.dopi.po.DailyInfoExample;
 
 @Mapper
 public interface DailyInfoMapper {
-    int countByExample(DailyInfoExample example);
+  int countByExample(DailyInfoExample example);
 
-    int deleteByExample(DailyInfoExample example);
+  int deleteByExample(DailyInfoExample example);
 
-    int deleteByPrimaryKey(Integer id);
+  int deleteByPrimaryKey(Integer id);
 
-    int insert(DailyInfo record);
+  int insert(DailyInfo record);
 
-    int insertSelective(DailyInfo record);
+  int insertSelective(DailyInfo record);
 
-    List<DailyInfo> selectByExample(DailyInfoExample example);
+  List<DailyInfo> selectByExample(DailyInfoExample example);
 
-    DailyInfo selectByPrimaryKey(Integer id);
+  DailyInfo selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") DailyInfo record, @Param("example") DailyInfoExample example);
+  int updateByExampleSelective(@Param("record") DailyInfo record, @Param("example") DailyInfoExample example);
 
-    int updateByExample(@Param("record") DailyInfo record, @Param("example") DailyInfoExample example);
+  int updateByExample(@Param("record") DailyInfo record, @Param("example") DailyInfoExample example);
 
-    int updateByPrimaryKeySelective(DailyInfo record);
+  int updateByPrimaryKeySelective(DailyInfo record);
 
-    int updateByPrimaryKey(DailyInfo record);
+  int updateByPrimaryKey(DailyInfo record);
 }

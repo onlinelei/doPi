@@ -13,14 +13,14 @@ import java.util.List;
 @Slf4j
 public class TestJunitWithApplication extends BaseSpringJunit4ClassTest {
 
-    @Autowired
-    private VerifyTableMapper verifyTableMapper;
+  @Autowired
+  private VerifyTableMapper verifyTableMapper;
 
-    @Test
-    public void testTransactionalRollback() {
-        VerifyTableExample example = new VerifyTableExample();
-        example.createCriteria().andIdEqualTo(1);
-        List<VerifyTable> verifyTables = verifyTableMapper.selectByExample(example);
-        log.info("result:{}", JSONObject.toJSONString(verifyTables));
-    }
+  @Test
+  public void testTransactionalRollback() {
+    VerifyTableExample example = new VerifyTableExample();
+    example.createCriteria().andIdEqualTo(1);
+    List<VerifyTable> verifyTables = verifyTableMapper.selectByExample(example);
+    log.info("result:{}", JSONObject.toJSONString(verifyTables));
+  }
 }

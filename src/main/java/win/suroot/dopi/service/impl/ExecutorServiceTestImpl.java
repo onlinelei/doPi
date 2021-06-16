@@ -18,32 +18,32 @@ import java.util.concurrent.Future;
 @Service
 public class ExecutorServiceTestImpl implements ExecutorServiceTest {
 
-    @Autowired
-    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+  @Autowired
+  private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
-    @Override
-    public void execTest() {
-        for (int i = 0; i < 30; i++) {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                log.error("thread sleep error", e);
-                return;
-            }
-            Future submit = threadPoolTaskExecutor.submit(new TestTask());
-            log.info("fature: {}", JSONObject.toJSONString(submit));
-        }
+  @Override
+  public void execTest() {
+    for (int i = 0; i < 30; i++) {
+      try {
+        Thread.sleep(2000);
+      } catch (InterruptedException e) {
+        log.error("thread sleep error", e);
+        return;
+      }
+      Future submit = threadPoolTaskExecutor.submit(new TestTask());
+      log.info("fature: {}", JSONObject.toJSONString(submit));
     }
+  }
 
-    @Override
-    public void asyncTask() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.info("Async task~");
+  @Override
+  public void asyncTask() {
+    try {
+      Thread.sleep(500);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
+    log.info("Async task~");
+  }
 }
 
 

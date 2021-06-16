@@ -19,27 +19,29 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "win.suroot.dopi.dao.master", sqlSessionTemplateRef = "masterSqlSessionTemplate")
 public class MasterDataSourceConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.master")
-    public DataSource masterDataSource() {
-        return DataSourceBuilder.create().build();
-    }
+  @Bean
+  @ConfigurationProperties(prefix = "spring.datasource.master")
+  public DataSource masterDataSource() {
+    return DataSourceBuilder.create().build();
+  }
 
-    @Bean
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(dataSource);
-        return bean.getObject();
-    }
+  @Bean
+  public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource)
+      throws Exception {
+    SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+    bean.setDataSource(dataSource);
+    return bean.getObject();
+  }
 
-    @Bean
-    public DataSourceTransactionManager asterTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
-        return new DataSourceTransactionManager(dataSource);
-    }
+  @Bean
+  public DataSourceTransactionManager asterTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+  }
 
-    @Bean
-    public SqlSessionTemplate masterSqlSessionTemplate(@Qualifier("masterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
-    }
+  @Bean
+  public SqlSessionTemplate masterSqlSessionTemplate(
+      @Qualifier("masterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    return new SqlSessionTemplate(sqlSessionFactory);
+  }
 
 }

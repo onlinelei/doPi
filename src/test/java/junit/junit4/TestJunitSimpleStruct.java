@@ -10,12 +10,12 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class TestJunitSimpleStruct {
 
-    @Test
-    public void testMax() {
-        int max = Math.max(2, 5);
-        int expected = 5;
+  @Test
+  public void testMax() {
+    int max = Math.max(2, 5);
+    int expected = 5;
 
-        log.info("@Test max(): " + max + " = " + expected);
-        Assert.assertEquals(expected, max);
-    }
+    log.info("@Test max(): " + max + " = " + expected);
+    Assert.assertEquals(expected, max);
+  }
 }

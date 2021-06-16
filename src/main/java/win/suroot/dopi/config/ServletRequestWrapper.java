@@ -15,93 +15,93 @@ import java.io.InputStreamReader;
  */
 public class ServletRequestWrapper extends HttpServletRequestWrapper {
 
-    private final byte[] body;
+  private final byte[] body;
 
-    /**
-     * Construct a wrapper for the specified request.
-     *
-     * @param request The request to be wrapped
-     */
-    public ServletRequestWrapper(HttpServletRequest request) throws IOException {
-        super(request);
-        body = IOUtils.toByteArray(super.getInputStream());
+  /**
+   * Construct a wrapper for the specified request.
+   *
+   * @param request The request to be wrapped
+   */
+  public ServletRequestWrapper(HttpServletRequest request) throws IOException {
+    super(request);
+    body = IOUtils.toByteArray(super.getInputStream());
+  }
+
+  @Override
+  public BufferedReader getReader() throws IOException {
+    return new BufferedReader(new InputStreamReader(getInputStream()));
+  }
+
+  @Override
+  public ServletInputStream getInputStream() throws IOException {
+    return new RequestBodyCachingInputStream(body);
+  }
+
+  private class RequestBodyCachingInputStream extends ServletInputStream {
+    private byte[] body;
+    private int lastIndexRetrieved = -1;
+    private ReadListener listener;
+
+    public RequestBodyCachingInputStream(byte[] body) {
+      this.body = body;
     }
 
     @Override
-    public BufferedReader getReader() throws IOException {
-        return new BufferedReader(new InputStreamReader(getInputStream()));
+    public int read() throws IOException {
+      if (isFinished()) {
+        return -1;
+      }
+      int i = body[lastIndexRetrieved + 1];
+      lastIndexRetrieved++;
+      if (isFinished() && listener != null) {
+        try {
+          listener.onAllDataRead();
+        } catch (IOException e) {
+          listener.onError(e);
+          throw e;
+        }
+      }
+      return i;
     }
 
     @Override
-    public ServletInputStream getInputStream() throws IOException {
-        return new RequestBodyCachingInputStream(body);
+    public boolean isFinished() {
+      return lastIndexRetrieved == body.length - 1;
     }
 
-    private class RequestBodyCachingInputStream extends ServletInputStream {
-        private byte[] body;
-        private int lastIndexRetrieved = -1;
-        private ReadListener listener;
-
-        public RequestBodyCachingInputStream(byte[] body) {
-            this.body = body;
-        }
-
-        @Override
-        public int read() throws IOException {
-            if (isFinished()) {
-                return -1;
-            }
-            int i = body[lastIndexRetrieved + 1];
-            lastIndexRetrieved++;
-            if (isFinished() && listener != null) {
-                try {
-                    listener.onAllDataRead();
-                } catch (IOException e) {
-                    listener.onError(e);
-                    throw e;
-                }
-            }
-            return i;
-        }
-
-        @Override
-        public boolean isFinished() {
-            return lastIndexRetrieved == body.length - 1;
-        }
-
-        @Override
-        public boolean isReady() {
-            // This implementation will never block
-            // We also never need to call the readListener from this method, as this method will never return false
-            return isFinished();
-        }
-
-        @Override
-        public void setReadListener(ReadListener listener) {
-            if (listener == null) {
-                throw new IllegalArgumentException("listener cann not be null");
-            }
-            if (this.listener != null) {
-                throw new IllegalArgumentException("listener has been set");
-            }
-            this.listener = listener;
-            isFinished();
-            try {
-                listener.onAllDataRead();
-            } catch (IOException e) {
-                listener.onError(e);
-            }
-        }
-
-        @Override
-        public int available() throws IOException {
-            return body.length - lastIndexRetrieved - 1;
-        }
-
-        @Override
-        public void close() throws IOException {
-            lastIndexRetrieved = body.length - 1;
-            body = null;
-        }
+    @Override
+    public boolean isReady() {
+      // This implementation will never block
+      // We also never need to call the readListener from this method, as this method will never return false
+      return isFinished();
     }
+
+    @Override
+    public void setReadListener(ReadListener listener) {
+      if (listener == null) {
+        throw new IllegalArgumentException("listener cann not be null");
+      }
+      if (this.listener != null) {
+        throw new IllegalArgumentException("listener has been set");
+      }
+      this.listener = listener;
+      isFinished();
+      try {
+        listener.onAllDataRead();
+      } catch (IOException e) {
+        listener.onError(e);
+      }
+    }
+
+    @Override
+    public int available() throws IOException {
+      return body.length - lastIndexRetrieved - 1;
+    }
+
+    @Override
+    public void close() throws IOException {
+      lastIndexRetrieved = body.length - 1;
+      body = null;
+    }
+  }
 }

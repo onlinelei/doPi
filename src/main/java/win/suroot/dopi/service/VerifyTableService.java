@@ -10,14 +10,14 @@ import java.util.Date;
 @Service
 public class VerifyTableService {
 
-    @Autowired
-    private VerifyTableMapper verifyTableMapper;
+  @Autowired
+  private VerifyTableMapper verifyTableMapper;
 
 
-    public int testMysql() {
-        VerifyTable verifyTable = new VerifyTable();
-        verifyTable.setCreateTime(new Date());
-        verifyTableMapper.insert(verifyTable);
-        return verifyTable.getId();
-    }
+  public int testMysql() {
+    VerifyTable verifyTable = new VerifyTable();
+    verifyTable.setCreateTime(new Date());
+    verifyTableMapper.insert(verifyTable);
+    return verifyTable.getId();
+  }
 }

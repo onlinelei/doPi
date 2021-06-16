@@ -5,5 +5,5 @@ package win.suroot.dopi.utils;
  */
 
 public class DateFormatConstant {
-    public static final String yyyMMdd = "yyyMMdd";
+  public static final String yyyMMdd = "yyyMMdd";
 }

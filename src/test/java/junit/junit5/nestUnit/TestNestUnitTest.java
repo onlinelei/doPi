@@ -10,29 +10,29 @@ import org.junit.jupiter.api.Test;
 @DisplayName("内嵌测试类")
 public class TestNestUnitTest {
 
-    @BeforeEach
-    void init() {
-        log.info("测试方法执行前准备");
-    }
+  @BeforeEach
+  void init() {
+    log.info("测试方法执行前准备");
+  }
 
-    @Nested
-    @DisplayName("第一个内嵌测试类")
-    class FirstNestTest {
+  @Nested
+  @DisplayName("第一个内嵌测试类")
+  class FirstNestTest {
 
-        @Test
-        @DisplayName("第一个内嵌测试")
-        void test() {
-            log.info("第一个内嵌测试类执行测试");
-        }
+    @Test
+    @DisplayName("第一个内嵌测试")
+    void test() {
+      log.info("第一个内嵌测试类执行测试");
     }
+  }
 
-    @Nested
-    @DisplayName("第二个内嵌测试类")
-    class SecondNestTest {
-        @Test
-        @DisplayName("第二个内嵌测试")
-        void test() {
-            log.info("第二个内嵌测试类执行测试");
-        }
+  @Nested
+  @DisplayName("第二个内嵌测试类")
+  class SecondNestTest {
+    @Test
+    @DisplayName("第二个内嵌测试")
+    void test() {
+      log.info("第二个内嵌测试类执行测试");
     }
+  }
 }

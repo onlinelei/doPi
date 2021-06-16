@@ -10,7 +10,7 @@
         <property name="endingDelimiter" value="`"/>
 
         <!-- 分页插件 不能正常使用，可以在排查一下-->
-<!--        <plugin type="win.suroot.dopi.common.PaginationPlugin"/>-->
+        <!--        <plugin type="win.suroot.dopi.common.PaginationPlugin"/>-->
 
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -57,16 +57,16 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-<!--        <table tableName="t_template_param" domainObjectName="TaskTemplateParam">-->
-<!--            <generatedKey column="param_id" sqlStatement="MySql" identity="true"/>-->
-<!--            <columnOverride column="is_visible" javaType="Integer" jdbcType="TINYINT"/>-->
-<!--            <columnOverride column="is_required" javaType="Integer" jdbcType="TINYINT"/>-->
-<!--            <columnOverride column="data_flow" javaType="Integer" jdbcType="TINYINT"/>-->
-<!--        </table>-->
+        <!--        <table tableName="t_template_param" domainObjectName="TaskTemplateParam">-->
+        <!--            <generatedKey column="param_id" sqlStatement="MySql" identity="true"/>-->
+        <!--            <columnOverride column="is_visible" javaType="Integer" jdbcType="TINYINT"/>-->
+        <!--            <columnOverride column="is_required" javaType="Integer" jdbcType="TINYINT"/>-->
+        <!--            <columnOverride column="data_flow" javaType="Integer" jdbcType="TINYINT"/>-->
+        <!--        </table>-->
     </context>
 </generatorConfiguration>
 
-<!--
-执行命名：
-mvn mybatis-generator:generate
--->
+        <!--
+        执行命名：
+        mvn mybatis-generator:generate
+        -->

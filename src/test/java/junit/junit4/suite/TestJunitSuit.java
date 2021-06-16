@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @Slf4j
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestJunitSuitSubTest1.class, TestJunitSuitSubTest2.class
+    TestJunitSuitSubTest1.class, TestJunitSuitSubTest2.class
 })
 public class TestJunitSuit {
 }

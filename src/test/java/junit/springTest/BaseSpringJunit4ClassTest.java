@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(transactionManager = "transactionManager_brandstart")
 public class BaseSpringJunit4ClassTest {
 
-    @Test
-    public void test() {
-    }
+  @Test
+  public void test() {
+  }
 }

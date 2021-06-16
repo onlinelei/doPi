@@ -10,17 +10,17 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface LoggerManage {
-	/**
-	 * 描述
-	 *
-	 * @return
-	 */
-	String description();
+  /**
+   * 描述
+   *
+   * @return
+   */
+  String description();
 
-	/**
-	 * 是否打印返回结果
-	 *
-	 * @return
-	 */
-	boolean printReturning() default true;
+  /**
+   * 是否打印返回结果
+   *
+   * @return
+   */
+  boolean printReturning() default true;
 }

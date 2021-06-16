@@ -4,9 +4,9 @@ import org.springframework.scheduling.annotation.Async;
 
 public interface ExecutorServiceTest {
 
-    void execTest();
+  void execTest();
 
-    @Async
-    void asyncTask();
+  @Async
+  void asyncTask();
 
 }

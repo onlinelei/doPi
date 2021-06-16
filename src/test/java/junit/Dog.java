@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Dog {
-    private String name;
-    private Float weight;
+  private String name;
+  private Float weight;
 
 }

@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @MapperScan("win.suroot.dopi.mapper")
 public class DoPiApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(DoPiApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(DoPiApplication.class, args);
+  }
 }

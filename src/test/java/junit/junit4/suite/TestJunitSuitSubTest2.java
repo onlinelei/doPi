@@ -6,8 +6,8 @@ import org.junit.Test;
 @Slf4j
 public class TestJunitSuitSubTest2 {
 
-    @Test
-    public void testSuit2() {
-        log.info("Test Junit suit 2...");
-    }
+  @Test
+  public void testSuit2() {
+    log.info("Test Junit suit 2...");
+  }
 }

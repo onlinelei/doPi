@@ -16,8 +16,8 @@ import javax.annotation.PostConstruct;
 @Component
 public class RaspBerryInit {
 
-    @PostConstruct
-    public void init() {
-        System.out.println("RaspBerry init...............");
-    }
+  @PostConstruct
+  public void init() {
+    System.out.println("RaspBerry init...............");
+  }
 }

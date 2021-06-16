@@ -20,42 +20,44 @@ import win.suroot.dopi.dto.ResDTO;
 @ControllerAdvice(annotations = RestController.class)
 public class ControllerResponseAdvisor implements ResponseBodyAdvice<Object> {
 
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
+  @Value("${server.servlet.context-path}")
+  private String contextPath;
 
-    /**
-     * 过滤哪些接口需要统一返回
-     *
-     * @param returnType
-     * @param converterType
-     * @return
-     */
-    @Override
-    public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
-    }
+  /**
+   * 过滤哪些接口需要统一返回
+   *
+   * @param returnType
+   * @param converterType
+   * @return
+   */
+  @Override
+  public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
+    return true;
+  }
 
-    /**
-     * 统一返回体
-     *
-     * @param body
-     * @param returnType
-     * @param selectedContentType
-     * @param selectedConverterType
-     * @param request
-     * @param response
-     * @return
-     */
-    @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        String requestUrl = request.getURI().getPath();
-        if (body instanceof String) {
-            return body;
-        }
-        //对特定路径的结果集进行封装
-        if (requestUrl.startsWith(contextPath)) {
-            return ResDTO.buildSuccessRes(body);
-        }
-        return body;
+  /**
+   * 统一返回体
+   *
+   * @param body
+   * @param returnType
+   * @param selectedContentType
+   * @param selectedConverterType
+   * @param request
+   * @param response
+   * @return
+   */
+  @Override
+  public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
+                                Class<? extends HttpMessageConverter<?>> selectedConverterType,
+                                ServerHttpRequest request, ServerHttpResponse response) {
+    String requestUrl = request.getURI().getPath();
+    if (body instanceof String) {
+      return body;
     }
+    //对特定路径的结果集进行封装
+    if (requestUrl.startsWith(contextPath)) {
+      return ResDTO.buildSuccessRes(body);
+    }
+    return body;
+  }
 }

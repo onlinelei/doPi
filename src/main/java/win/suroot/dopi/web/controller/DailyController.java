@@ -12,12 +12,12 @@ import win.suroot.dopi.service.DailyInfoService;
 @RequestMapping("/daily")
 public class DailyController extends BaseController {
 
-    @Autowired
-    private DailyInfoService dailyInfoService;
+  @Autowired
+  private DailyInfoService dailyInfoService;
 
-    @RequestMapping("/info")
-    public Object hello() {
-        DailyInfoDTO info = dailyInfoService.todayInfo();
-        return info;
-    }
+  @RequestMapping("/info")
+  public Object hello() {
+    DailyInfoDTO info = dailyInfoService.todayInfo();
+    return info;
+  }
 }

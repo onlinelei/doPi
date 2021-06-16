@@ -11,10 +11,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum AlarmLevelCode {
-    NO_NEED_ALARM("0", "无需告警"),
-    NEED_ALARM("1", "需要告警");
-    //告警级别
-    private String code;
-    //级别信息
-    private String msg;
+  NO_NEED_ALARM("0", "无需告警"),
+  NEED_ALARM("1", "需要告警");
+  //告警级别
+  private String code;
+  //级别信息
+  private String msg;
 }

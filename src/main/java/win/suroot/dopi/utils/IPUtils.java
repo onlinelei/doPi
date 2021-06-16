@@ -8,38 +8,38 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class IPUtils {
 
-    private static final String IP_UNKNOWN = "unknown";
+  private static final String IP_UNKNOWN = "unknown";
 
-    /**
-     * #func 获取IP地址<br>
-     * #desc 不再简单getRemoteAddr
-     */
-    public static String getIpAddr(HttpServletRequest request) {
-        if (request == null) {
-            return null;
-        }
-        String ip = request.getHeader("x-forwarded-for");
-        if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader("Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader("WL-Proxy-Client-IP");
-        }
-        if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-        }
-
-        // 取X-Forwarded-For中第一个非unknown的有效IP字符串。
-        if (ip.indexOf(",") != -1) {
-            String[] ipList = ip.split(",");
-            String tmp;
-            for (int i = 0; i < ipList.length; i++) {
-                tmp = ipList[i];
-                if (tmp != null && !IP_UNKNOWN.equalsIgnoreCase(tmp.trim())) {
-                    return tmp.trim();
-                }
-            }
-        }
-        return ip;
+  /**
+   * #func 获取IP地址<br>
+   * #desc 不再简单getRemoteAddr
+   */
+  public static String getIpAddr(HttpServletRequest request) {
+    if (request == null) {
+      return null;
     }
+    String ip = request.getHeader("x-forwarded-for");
+    if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
+      ip = request.getHeader("Proxy-Client-IP");
+    }
+    if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
+      ip = request.getHeader("WL-Proxy-Client-IP");
+    }
+    if (ip == null || ip.length() == 0 || IP_UNKNOWN.equalsIgnoreCase(ip)) {
+      ip = request.getRemoteAddr();
+    }
+
+    // 取X-Forwarded-For中第一个非unknown的有效IP字符串。
+    if (ip.indexOf(",") != -1) {
+      String[] ipList = ip.split(",");
+      String tmp;
+      for (int i = 0; i < ipList.length; i++) {
+        tmp = ipList[i];
+        if (tmp != null && !IP_UNKNOWN.equalsIgnoreCase(tmp.trim())) {
+          return tmp.trim();
+        }
+      }
+    }
+    return ip;
+  }
 }

@@ -9,25 +9,25 @@ import win.suroot.dopi.po.VerifyTableExample;
 
 @Mapper
 public interface VerifyTableMapper {
-    int countByExample(VerifyTableExample example);
+  int countByExample(VerifyTableExample example);
 
-    int deleteByExample(VerifyTableExample example);
+  int deleteByExample(VerifyTableExample example);
 
-    int deleteByPrimaryKey(Integer id);
+  int deleteByPrimaryKey(Integer id);
 
-    int insert(VerifyTable record);
+  int insert(VerifyTable record);
 
-    int insertSelective(VerifyTable record);
+  int insertSelective(VerifyTable record);
 
-    List<VerifyTable> selectByExample(VerifyTableExample example);
+  List<VerifyTable> selectByExample(VerifyTableExample example);
 
-    VerifyTable selectByPrimaryKey(Integer id);
+  VerifyTable selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") VerifyTable record, @Param("example") VerifyTableExample example);
+  int updateByExampleSelective(@Param("record") VerifyTable record, @Param("example") VerifyTableExample example);
 
-    int updateByExample(@Param("record") VerifyTable record, @Param("example") VerifyTableExample example);
+  int updateByExample(@Param("record") VerifyTable record, @Param("example") VerifyTableExample example);
 
-    int updateByPrimaryKeySelective(VerifyTable record);
+  int updateByPrimaryKeySelective(VerifyTable record);
 
-    int updateByPrimaryKey(VerifyTable record);
+  int updateByPrimaryKey(VerifyTable record);
 }

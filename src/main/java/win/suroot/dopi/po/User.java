@@ -6,73 +6,73 @@ import win.suroot.dopi.common.BaseEntity;
 import java.util.Date;
 
 public class User extends BaseEntity {
-    private Integer id;
+  private Integer id;
 
-    private String ename;
+  private String ename;
 
-    private String group;
+  private String group;
 
-    private String email;
+  private String email;
 
-    private String cname;
+  private String cname;
 
-    private Integer roleId;
+  private Integer roleId;
 
-    private Date lastModTime;
+  private Date lastModTime;
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getEname() {
-        return ename;
-    }
+  public String getEname() {
+    return ename;
+  }
 
-    public void setEname(String ename) {
-        this.ename = ename == null ? null : ename.trim();
-    }
+  public void setEname(String ename) {
+    this.ename = ename == null ? null : ename.trim();
+  }
 
-    public String getGroup() {
-        return group;
-    }
+  public String getGroup() {
+    return group;
+  }
 
-    public void setGroup(String group) {
-        this.group = group == null ? null : group.trim();
-    }
+  public void setGroup(String group) {
+    this.group = group == null ? null : group.trim();
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+  public void setEmail(String email) {
+    this.email = email == null ? null : email.trim();
+  }
 
-    public String getCname() {
-        return cname;
-    }
+  public String getCname() {
+    return cname;
+  }
 
-    public void setCname(String cname) {
-        this.cname = cname == null ? null : cname.trim();
-    }
+  public void setCname(String cname) {
+    this.cname = cname == null ? null : cname.trim();
+  }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
+  public Integer getRoleId() {
+    return roleId;
+  }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
+  public void setRoleId(Integer roleId) {
+    this.roleId = roleId;
+  }
 
-    public Date getLastModTime() {
-        return lastModTime;
-    }
+  public Date getLastModTime() {
+    return lastModTime;
+  }
 
-    public void setLastModTime(Date lastModTime) {
-        this.lastModTime = lastModTime;
-    }
+  public void setLastModTime(Date lastModTime) {
+    this.lastModTime = lastModTime;
+  }
 }

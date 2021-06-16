@@ -10,29 +10,29 @@ import java.text.ParseException;
  */
 public interface RaspberryService {
 
-    /**
-     * light test demo
-     *
-     * @author: qianlei
-     * @date: 2019-09-29 16:01
-     */
-    void light() throws InterruptedException;
+  /**
+   * light test demo
+   *
+   * @author: qianlei
+   * @date: 2019-09-29 16:01
+   */
+  void light() throws InterruptedException;
 
-    /**
-     * light test demo1
-     *
-     * @author: qianlei
-     * @date: 2019-09-29 16:01
-     */
-    void light1();
+  /**
+   * light test demo1
+   *
+   * @author: qianlei
+   * @date: 2019-09-29 16:01
+   */
+  void light1();
 
-    /**
-     * system info of pi
-     *
-     * @author: qianlei
-     * @date: 2019-09-29 15:42
-     * @update: [变更日期YYYY-MM-DD][变更人姓名][变更描述]
-     */
-    void sysInfo() throws IOException, InterruptedException, ParseException;
+  /**
+   * system info of pi
+   *
+   * @author: qianlei
+   * @date: 2019-09-29 15:42
+   * @update: [变更日期YYYY-MM-DD][变更人姓名][变更描述]
+   */
+  void sysInfo() throws IOException, InterruptedException, ParseException;
 
 }

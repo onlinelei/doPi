@@ -19,28 +19,28 @@ import win.suroot.dopi.service.VerifyTableService;
 @RequestMapping("/demo")
 public class DemoController {
 
-    @Autowired
-    private ExecutorServiceTest executorService;
-    @Autowired
-    private VerifyTableService verifyTableService;
+  @Autowired
+  private ExecutorServiceTest executorService;
+  @Autowired
+  private VerifyTableService verifyTableService;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "hello world!";
-    }
+  @RequestMapping("/hello")
+  public String hello() {
+    return "hello world!";
+  }
 
-    @RequestMapping("/task")
-    @LoggerManage(description = "异步线程测试")
-    public String task() {
-        for (int i = 0; i < 20; i++) {
-            executorService.asyncTask();
-        }
-        return "done";
+  @RequestMapping("/task")
+  @LoggerManage(description = "异步线程测试")
+  public String task() {
+    for (int i = 0; i < 20; i++) {
+      executorService.asyncTask();
     }
+    return "done";
+  }
 
-    @RequestMapping("/testMysql")
-    @LoggerManage(description = "测试 mysql 连通性")
-    public Object testMysql() {
-        return verifyTableService.testMysql();
-    }
+  @RequestMapping("/testMysql")
+  @LoggerManage(description = "测试 mysql 连通性")
+  public Object testMysql() {
+    return verifyTableService.testMysql();
+  }
 }

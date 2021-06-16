@@ -7,17 +7,17 @@ import win.suroot.dopi.service.VerifyTableService;
 
 public class TestJunitWitTransication extends BaseSpringJunit4ClassTest {
 
-    @Autowired
-    private VerifyTableService verifyTableService;
+  @Autowired
+  private VerifyTableService verifyTableService;
 
-    @Test
-    @Rollback
-    public void testTransactionalRollback() {
-        verifyTableService.testMysql();
-    }
+  @Test
+  @Rollback
+  public void testTransactionalRollback() {
+    verifyTableService.testMysql();
+  }
 
-    @Test
-    public void testTransactionalCommit() {
-        verifyTableService.testMysql();
-    }
+  @Test
+  public void testTransactionalCommit() {
+    verifyTableService.testMysql();
+  }
 }
