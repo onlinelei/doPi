@@ -2,7 +2,9 @@ package junit.springTest;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import win.suroot.dopi.mapper.VerifyTableMapper;
 import win.suroot.dopi.po.VerifyTable;
@@ -16,6 +18,7 @@ public class TestJunitWithApplication extends BaseSpringJunit4ClassTest {
   @Autowired
   private VerifyTableMapper verifyTableMapper;
 
+  @Disabled
   @Test
   public void testTransactionalRollback() {
     VerifyTableExample example = new VerifyTableExample();

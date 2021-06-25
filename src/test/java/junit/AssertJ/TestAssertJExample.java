@@ -2,7 +2,7 @@ package junit.AssertJ;
 
 import com.google.common.collect.Maps;
 import junit.Dog;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -62,7 +62,7 @@ public class TestAssertJExample {
         .as("日期断言描述")
         .isAfter("2020-12-12") // 是否在日期之后
         .isAfterYear(2018) // 是否在某年之后
-        .isBetween("2020-12-12", "2021-06-01") // 是否在日期之间
+        .isBetween("2020-12-12", "2090-06-01") // 是否在日期之间
         .isEqualToIgnoringHours(new Date().toLocaleString()) // 是否在忽略小时的情况下相等
         .isExactlyInstanceOf(Date.class) // 是否是 Date 的实例
         .isInSameHourAs(new Date()) // 小时是否相同

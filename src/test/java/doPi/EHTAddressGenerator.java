@@ -3,7 +3,7 @@ package doPi;
 import com.google.common.collect.ImmutableList;
 import org.bitcoinj.crypto.*;
 import org.bitcoinj.wallet.DeterministicSeed;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Keys;
 import sun.security.provider.SecureRandom;
@@ -17,7 +17,7 @@ public class EHTAddressGenerator extends DoPiApplicationTests {
 
   @Test
   public void contextLoads() throws MnemonicException.MnemonicLengthException {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10; i++) {
       createWallet();
     }
   }
