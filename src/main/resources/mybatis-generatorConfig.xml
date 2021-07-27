@@ -8,6 +8,20 @@
         <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
+        <!-- 为模型生成序列化方法-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!--可以自定义生成model的代码注释-->
+        <commentGenerator type="com.example.bookstore.dao.CommentGenerator">
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+            <property name="addRemarkComments" value="false"/>
+        </commentGenerator>
+
 
         <!-- 分页插件 不能正常使用，可以在排查一下-->
         <!--        <plugin type="win.suroot.dopi.common.PaginationPlugin"/>-->
@@ -55,6 +69,9 @@
         <!-- 指定数据库表 -->
         <table tableName="t_daily_info" domainObjectName="DailyInfo">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="left_html" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="right_html" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="ext_message" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
 
         <!--        <table tableName="t_template_param" domainObjectName="TaskTemplateParam">-->
